@@ -112,7 +112,7 @@ Check out the [examples directory](../../typescript-demo) for complete usage exa
 
 ## API Reference
 
-For detailed API documentation, visit: [FlowUs API Documentation](https://docs.flowus.cn/api)
+For detailed API documentation, visit: [FlowUs API Documentation](https://flowus.cn/share/df7cd54f-1c21-4fc1-9fd8-ce81be1918a5)
 
 ## Contributing
 
@@ -125,5 +125,5 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## Support
 
 - 📧 Email: support@flowus.cn
-- 📚 Documentation: https://docs.flowus.cn
-- 🐛 Issues: https://github.com/flowus/api-sdk/issues
+- 📚 Documentation: https://flowus.cn/share/df7cd54f-1c21-4fc1-9fd8-ce81be1918a5
+- 🐛 Issues: https://github.com/next-space/flowus-api-sdk/issues

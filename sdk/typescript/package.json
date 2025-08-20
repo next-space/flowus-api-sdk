@@ -1,6 +1,6 @@
 {
   "name": "flowus-api-sdk",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Official TypeScript/JavaScript SDK for FlowUs API - Create, manage, and interact with FlowUs pages, databases, and blocks",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -27,13 +27,13 @@
   ],
   "author": "FlowUs Team",
   "license": "MIT",
-  "homepage": "https://github.com/flowus/api-sdk",
+  "homepage": "https://github.com/next-space/flowus-api-sdk",
   "repository": {
     "type": "git",
-    "url": "https://github.com/flowus/api-sdk.git"
+    "url": "https://github.com/next-space/flowus-api-sdk.git"
   },
   "bugs": {
-    "url": "https://github.com/flowus/api-sdk/issues"
+    "url": "https://github.com/next-space/flowus-api-sdk/issues"
   },
   "devDependencies": {
     "@types/node": "^24.1.0",

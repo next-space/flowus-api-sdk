@@ -300,5 +300,5 @@ openapi-generator-cli generate -i openapi.json -g php -o sdk/php
 ## 📞 联系
 
 - FlowUs 官方网站：https://flowus.cn
-- API 文档：https://flowus.cn/docs
+- API 文档：https://flowus.cn/share/df7cd54f-1c21-4fc1-9fd8-ce81be1918a5
 - 技术支持：请通过 FlowUs 官方渠道联系

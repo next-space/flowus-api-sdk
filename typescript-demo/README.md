@@ -85,8 +85,8 @@ typescript-demo/
 
 ## 更多资源
 
-- [FlowUs API 文档](https://flowus.cn/api-docs)
-- [FlowUs 官网](https://flowus.cn)
+- [FlowUs API 文档](https://flowus.cn/share/df7cd54f-1c21-4fc1-9fd8-ce81be1918a5)
+- [FlowUs 官网](https://flowus.cn/product)
 
 ## 许可证
 

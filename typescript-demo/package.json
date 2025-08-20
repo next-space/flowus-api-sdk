@@ -1,6 +1,6 @@
 {
   "name": "flowus-api-typescript-demo",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "FlowUs API TypeScript SDK 演示程序",
   "main": "dist/index.js",
   "scripts": {
