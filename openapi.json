@@ -428,6 +428,46 @@
           }
         }
       },
+      "UserMe": {
+        "type": "object",
+        "properties": {
+          "object": {
+            "type": "string",
+            "const": "user"
+          },
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "description": "用户唯一标识符"
+          },
+          "type": {
+            "type": "string",
+            "const": "person"
+          },
+          "person": {
+            "type": "object",
+            "properties": {
+              "email": {
+                "type": "string",
+                "format": "email",
+                "nullable": true,
+                "description": "用户邮箱地址"
+              }
+            }
+          },
+          "name": {
+            "type": "string",
+            "nullable": true,
+            "description": "用户显示名称"
+          },
+          "avatar_url": {
+            "type": "string",
+            "format": "uri",
+            "nullable": true,
+            "description": "用户头像URL"
+          }
+        }
+      },
       "IconEmoji": {
         "type": "object",
         "required": ["type", "emoji"],
@@ -1845,6 +1885,56 @@
           }
         }
       }
+    },
+    "/v1/users/me": {
+      "get": {
+        "summary": "获取机器人创建者信息",
+        "description": "获取当前机器人的创建者用户信息",
+        "operationId": "getMe",
+        "tags": ["用户"],
+        "responses": {
+          "200": {
+            "description": "成功获取用户信息",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserMe"
+                },
+                "example": {
+                  "object": "user",
+                  "id": "875bb809-eab6-467f-80d9-a7de6899d885",
+                  "type": "person",
+                  "person": {
+                    "email": "user@example.com"
+                  },
+                  "name": "张三",
+                  "avatar_url": "https://cdn2.flowus.cn/avatar123.jpg"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "未授权",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "机器人创建者信息不存在",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "tags": [
@@ -1859,6 +1949,10 @@
     {
       "name": "块",
       "description": "块相关操作"
+    },
+    {
+      "name": "用户",
+      "description": "用户相关操作"
     }
   ]
 }

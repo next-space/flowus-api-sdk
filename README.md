@@ -115,6 +115,10 @@ java -cp "target/classes:../sdk/java/target/lib/*:../sdk/java/target/flowus-api-
 - **PageSearchDemo** - 页面搜索
 - **UpdateDatabaseRecordDemo** - 数据库记录更新
 
+
+#### 编译javascript sdk
+
+
 #### 运行 TypeScript 演示
 
 ```bash
