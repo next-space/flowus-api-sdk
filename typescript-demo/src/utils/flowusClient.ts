@@ -211,6 +211,33 @@ class FlowUsClient {
       throw this.handleApiError(error, '搜索页面');
     }
   }
+
+  /**
+   * 获取当前机器人创建者信息
+   * @returns 用户信息
+   */
+  async getUserMe(): Promise<any> {
+    try {
+      return await this.api.getMe();
+    } catch (error) {
+      throw this.handleApiError(error, '获取用户信息');
+    }
+  }
+
+  /**
+   * V1搜索页面
+   * @param searchData 搜索数据
+   * @returns 搜索结果
+   */
+  async v1Search(searchData: any): Promise<any> {
+    try {
+      return await this.api.v1Search({
+        v1SearchRequest: searchData
+      });
+    } catch (error) {
+      throw this.handleApiError(error, 'V1搜索');
+    }
+  }
   
   /**
    * 获取块的子块

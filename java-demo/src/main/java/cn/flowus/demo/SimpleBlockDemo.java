@@ -1,8 +1,8 @@
 package cn.flowus.demo;
 
+import cn.flowus.demo.config.ApiConfig;
 import org.openapitools.client.ApiClient;
 import org.openapitools.client.ApiException;
-import org.openapitools.client.Configuration;
 import org.openapitools.client.auth.*;
 import org.openapitools.client.model.*;
 import org.openapitools.client.api.DefaultApi;
@@ -17,15 +17,19 @@ import java.util.UUID;
  */
 public class SimpleBlockDemo {
     public static void main(String[] args) throws Exception {
-        // 配置API客户端
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.flowus.cn");
-
-        // 配置Bearer认证 - 请替换为您的实际token
-        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
-        bearerAuth.setBearerToken("your-api-token-here"); // 请替换为您的实际API token
-
-        DefaultApi apiInstance = new DefaultApi(defaultClient);
+        // 加载配置并初始化API客户端
+        ApiConfig config = ApiConfig.getInstance();
+        config.printConfig();
+        
+        // 检查配置是否有效
+        if (!config.isConfigValid()) {
+            System.err.println("❌ 配置无效，请检查 .env 文件中的 FLOWUS_BEARER_TOKEN 设置");
+            System.err.println("💡 请复制 .env.example 为 .env 并填入您的实际配置");
+            return;
+        }
+        
+        ApiClient apiClient = config.getApiClient();
+        DefaultApi apiInstance = new DefaultApi(apiClient);
         
         // 替换为实际的块ID
         UUID blockId = UUID.fromString("101fe0c3-cbbd-4a66-91d0-26fc63d2229e");

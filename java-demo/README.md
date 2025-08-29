@@ -6,27 +6,31 @@
 
 ```
 demo/
-├── FlowUsApiDemo.java      # 完整的API演示程序
-├── SimpleBlockDemo.java    # 简化的块操作演示
-├── pom.xml                # Maven项目配置
-└── README.md              # 项目说明
+├── BlockAddChildrenDemo.java    # 向块添加子块演示
+├── CreateDatabaseDemo.java      # 创建数据库演示
+├── CreateDatabaseRecordDemo.java # 创建数据库记录演示
+├── DeleteBlockDemo.java         # 删除块演示
+├── SimpleBlockDemo.java         # 简化的块操作演示
+├── UserMeDemo.java              # 获取用户信息演示
+├── V1SearchDemo.java            # 搜索页面演示
+├── pom.xml                     # Maven项目配置
+└── README.md                   # 项目说明
 ```
 
 ## 功能演示
 
-### FlowUsApiDemo.java
-完整的API功能演示，包括：
-- 创建数据库
-- 在数据库中创建页面
-- 向页面添加各种类型的块（段落、待办事项、标题等）
-- 查询数据库
-- 获取页面信息
-- 获取块的子块
+### 数据库操作
+- **CreateDatabaseDemo.java**: 创建数据库，包含各种属性类型（标题、选择、多选、日期、数字等）
+- **CreateDatabaseRecordDemo.java**: 在数据库中创建页面记录
 
-### SimpleBlockDemo.java
-基于用户提供示例的简化演示，专注于：
-- 向指定块添加段落子块
-- 设置富文本格式和颜色
+### 块操作
+- **BlockAddChildrenDemo.java**: 向指定块添加子块（段落、待办事项、标题等）
+- **DeleteBlockDemo.java**: 删除指定的块
+- **SimpleBlockDemo.java**: 简化的块操作演示，专注于向指定块添加段落子块
+
+### 用户和搜索
+- **UserMeDemo.java**: 获取机器人创建者的用户信息
+- **V1SearchDemo.java**: 在授权范围内搜索页面，支持关键词搜索和分页
 
 ## 环境要求
 
@@ -45,13 +49,25 @@ cd ../sdk/java-compatible
 mvn clean install -DskipTests
 ```
 
-### 2. 配置Token
+### 2. 配置环境变量
 
-在演示代码中替换`your-token-here`为您的实际FlowUs API Token：
+复制环境变量模板文件并配置您的API信息：
 
-```java
-bearerAuth.setBearerToken("您的实际token");
+```bash
+# 复制配置模板
+cp .env.example .env
+
+# 编辑 .env 文件，填入您的实际配置
+# FLOWUS_BASE_PATH=https://api.flowus.cn
+# FLOWUS_BEARER_TOKEN=your-actual-api-token-here
 ```
+
+配置文件说明：
+- `FLOWUS_BASE_PATH`: FlowUs API的基础路径（默认: https://api.flowus.cn）
+- `FLOWUS_BEARER_TOKEN`: 您的FlowUs API Token（必填）
+- `FLOWUS_CONNECT_TIMEOUT`: 连接超时时间，毫秒（默认: 30000）
+- `FLOWUS_READ_TIMEOUT`: 读取超时时间，毫秒（默认: 30000）
+- `FLOWUS_WRITE_TIMEOUT`: 写入超时时间，毫秒（默认: 30000）
 
 ### 3. 配置ID
 
@@ -66,11 +82,26 @@ bearerAuth.setBearerToken("您的实际token");
 # 编译项目
 mvn clean compile
 
-# 运行简化演示
-mvn exec:java -Dexec.mainClass="cn.flowus.demo.SimpleBlockDemo"
+# 运行用户信息演示
+mvn exec:java -Dexec.mainClass="cn.flowus.demo.UserMeDemo"
 
-# 运行完整演示
-mvn exec:java -Dexec.mainClass="cn.flowus.demo.FlowUsApiDemo"
+# 运行搜索演示
+mvn exec:java -Dexec.mainClass="cn.flowus.demo.V1SearchDemo"
+
+# 运行数据库创建演示
+mvn exec:java -Dexec.mainClass="cn.flowus.demo.CreateDatabaseDemo"
+
+# 运行数据库记录创建演示
+mvn exec:java -Dexec.mainClass="cn.flowus.demo.CreateDatabaseRecordDemo"
+
+# 运行块操作演示
+mvn exec:java -Dexec.mainClass="cn.flowus.demo.BlockAddChildrenDemo"
+
+# 运行删除块演示
+mvn exec:java -Dexec.mainClass="cn.flowus.demo.DeleteBlockDemo"
+
+# 运行简化块演示
+mvn exec:java -Dexec.mainClass="cn.flowus.demo.SimpleBlockDemo"
 
 # 或者构建可执行JAR后运行
 mvn clean package
@@ -78,6 +109,58 @@ java -jar target/flowus-api-demo-1.0.0-shaded.jar
 ```
 
 ## API 使用示例
+
+### 获取用户信息
+
+```java
+// 使用配置类初始化API客户端
+ApiConfig config = ApiConfig.getInstance();
+ApiClient apiClient = config.getApiClient();
+DefaultApi apiInstance = new DefaultApi(apiClient);
+
+// 调用获取用户信息API
+UserMe result = apiInstance.getMe();
+System.out.println("用户ID: " + result.getId());
+System.out.println("用户名: " + result.getName());
+System.out.println("邮箱: " + result.getPerson().getEmail());
+```
+
+### 搜索页面
+
+```java
+// 使用配置类初始化API客户端
+ApiConfig config = ApiConfig.getInstance();
+ApiClient apiClient = config.getApiClient();
+DefaultApi apiInstance = new DefaultApi(apiClient);
+
+// 创建搜索请求
+V1SearchRequest searchRequest = new V1SearchRequest();
+searchRequest.setQuery("项目计划");    // 搜索关键词
+searchRequest.setPageSize(10);        // 每页结果数
+searchRequest.setStartCursor(null);   // 分页游标（首页为null）
+
+// 调用搜索API
+V1SearchResponse result = apiInstance.v1Search(searchRequest);
+
+// 处理搜索结果
+for (V1SearchPageResult page : result.getResults()) {
+    System.out.println("页面ID: " + page.getId());
+    System.out.println("创建时间: " + page.getCreatedTime());
+    
+    // 获取页面标题
+    if (page.getProperties() != null && page.getProperties().getTitle() != null) {
+        for (RichTextItem titleItem : page.getProperties().getTitle().getTitle()) {
+            System.out.println("标题: " + titleItem.getText().getContent());
+        }
+    }
+}
+
+// 检查是否有更多结果
+if (result.getHasMore()) {
+    String nextCursor = result.getNextCursor();
+    // 使用 nextCursor 获取下一页
+}
+```
 
 ### 创建段落块
 
@@ -150,6 +233,32 @@ GetBlockChildren200Response result = apiInstance.appendBlockChildren(blockId, re
 - 权限不足
 - 请求参数错误
 - 目标资源不存在
+
+### 4. 配置文件问题
+
+如果遇到配置相关的问题：
+
+**未找到 .env 文件：**
+```
+⚠️ 未找到 .env 文件，将使用系统环境变量
+```
+解决方案：
+```bash
+cp .env.example .env
+# 然后编辑 .env 文件填入您的配置
+```
+
+**Token 未配置：**
+```
+⚠️ 警告: Bearer Token 未配置或使用默认值，API 调用可能失败
+```
+解决方案：在 .env 文件中设置正确的 `FLOWUS_BEARER_TOKEN`
+
+**配置验证失败：**
+```
+❌ 配置无效，请检查 .env 文件中的 FLOWUS_BEARER_TOKEN 设置
+```
+解决方案：检查 Token 是否正确，不应为 `your-api-token-here`
 
 ## 许可证
 

@@ -1,6 +1,6 @@
 /*
  * FlowUs API
- * FlowUs Developer API - 
+ * FlowUs Developer API
  *
  * The version of the OpenAPI document: 1.0.0
  * 
@@ -49,7 +49,7 @@ import org.openapitools.client.JSON;
 /**
  * CreatePagePropertyValueSelect
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-08-02T17:17:19.267825+08:00[Asia/Shanghai]", comments = "Generator version: 7.14.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-08-29T21:44:43.879367+08:00[Asia/Shanghai]", comments = "Generator version: 7.14.0")
 public class CreatePagePropertyValueSelect {
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)

@@ -1,6 +1,6 @@
 /*
  * FlowUs API
- * FlowUs Developer API - 
+ * FlowUs Developer API
  *
  * The version of the OpenAPI document: 1.0.0
  * 

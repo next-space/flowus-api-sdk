@@ -13,11 +13,15 @@
     "dev:update-record": "ts-node src/UpdateDatabaseRecordDemo.ts",
     "dev:delete-block": "ts-node src/DeleteBlockDemo.ts",
     "dev:search-page": "ts-node src/PageSearchDemo.ts",
+    "dev:user-me": "ts-node src/UserMeDemo.ts",
+    "dev:v1-search": "ts-node src/V1SearchDemo.ts",
     "demo:create-database": "node dist/CreateDatabaseDemo.js",
     "demo:add-children": "node dist/BlockAddChildrenDemo.js",
     "demo:create-record": "node dist/CreateDatabaseRecordDemo.js",
     "demo:delete-block": "node dist/DeleteBlockDemo.js",
-    "demo:all": "npm run demo:create-database && npm run demo:add-children && npm run demo:create-record"
+    "demo:user-me": "node dist/UserMeDemo.js",
+    "demo:v1-search": "node dist/V1SearchDemo.js",
+    "demo:all": "npm run demo:create-database && npm run demo:add-children && npm run demo:create-record && npm run demo:user-me && npm run demo:v1-search"
   },
   "keywords": [
     "flowus",
@@ -30,7 +34,7 @@
   "license": "MIT",
   "dependencies": {
     "uuid": "^9.0.0",
-    "flowus-api-sdk": "1.0.0"
+    "flowus-api-sdk": "1.1.2"
   },
   "devDependencies": {
     "@types/node": "^20.11.0",
