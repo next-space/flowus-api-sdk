@@ -62,6 +62,17 @@ async function createDatabaseRecordDemo() {
           type: 'number',
           number: 12
         },
+        '我的内容': {
+          type: 'rich_text',
+          rich_text: [
+            {
+              type: 'text',
+              text: {
+                content: '我的内容'
+              }
+            }
+          ]
+        },
         '我的电话': {
           type: 'phone_number',
           phone_number: '13683236049'

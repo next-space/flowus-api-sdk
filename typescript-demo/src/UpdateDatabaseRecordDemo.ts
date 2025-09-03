@@ -19,14 +19,25 @@ async function updateDatabaseRecordDemo() {
       apiToken: config.apiToken,
       timeout: config.timeout
     });
-    const pageId = "4bc1c007-29fa-435c-a909-1d05706454ed";
+    const pageId = "b258aaff-7915-43a8-8940-0a5d76717e97";
     const pageData = {
       properties: {
         '完成': {
           type: 'checkbox',
-          checkbox: false
+          checkbox: true
+        },
+        '我的内容': {
+          type: 'rich_text',
+          rich_text: [
+            {
+              type: 'text',
+              text: {
+                content: '我的内容v2'
+              }
+            }
+          ]
         }
-      }
+      },
     };
   
     // 调用API创建页面

@@ -54,6 +54,10 @@ export async function createDatabaseDemo() {
           name: '已看',
           type: 'number'
         },
+        '我的内容': {
+          name: '我的内容',
+          type: 'rich_text'
+        },
         '我的公式': {
           name: '我的公式',
           type: 'formula',
