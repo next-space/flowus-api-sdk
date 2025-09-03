@@ -2,7 +2,7 @@
 
 FlowUs API
 - API version: 1.0.0
-  - Build date: 2025-08-29T21:44:43.879367+08:00[Asia/Shanghai]
+  - Build date: 2025-09-03T19:40:01.157375+08:00[Asia/Shanghai]
   - Generator version: 7.14.0
 
 FlowUs Developer API

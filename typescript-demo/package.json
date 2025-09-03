@@ -34,7 +34,7 @@
   "license": "MIT",
   "dependencies": {
     "uuid": "^9.0.0",
-    "flowus-api-sdk": "1.1.2"
+    "flowus-api-sdk": "1.1.3"
   },
   "devDependencies": {
     "@types/node": "^20.11.0",

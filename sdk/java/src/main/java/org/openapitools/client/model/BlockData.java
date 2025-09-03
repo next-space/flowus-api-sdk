@@ -56,7 +56,7 @@ import org.openapitools.client.JSON;
 /**
  * 块类型特定的数据内容
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-08-29T21:44:43.879367+08:00[Asia/Shanghai]", comments = "Generator version: 7.14.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-09-03T19:40:01.157375+08:00[Asia/Shanghai]", comments = "Generator version: 7.14.0")
 public class BlockData {
   public static final String SERIALIZED_NAME_RICH_TEXT = "rich_text";
   @SerializedName(SERIALIZED_NAME_RICH_TEXT)

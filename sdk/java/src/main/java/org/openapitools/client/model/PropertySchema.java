@@ -76,7 +76,7 @@ import com.google.gson.JsonParseException;
 
 import org.openapitools.client.JSON;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-08-29T21:44:43.879367+08:00[Asia/Shanghai]", comments = "Generator version: 7.14.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-09-03T19:40:01.157375+08:00[Asia/Shanghai]", comments = "Generator version: 7.14.0")
 public class PropertySchema extends AbstractOpenApiSchema {
     private static final Logger log = Logger.getLogger(PropertySchema.class.getName());
 
